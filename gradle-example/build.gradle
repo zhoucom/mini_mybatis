@@ -1,0 +1,54 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.yourcompany'
+version = '1.0.0'
+sourceCompatibility = '8'
+
+repositories {
+    mavenLocal()  // 重要：添加本地Maven仓库以使用Mini MyBatis Starter
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot基础依赖
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    
+    // Mini MyBatis Starter - 核心依赖
+    implementation 'com.example:mini-mybatis-spring-boot-starter:1.0.1'
+    
+    // 数据库驱动 (根据实际需求选择一个)
+    runtimeOnly 'com.h2database:h2:2.1.210'                    // H2内存数据库
+    // runtimeOnly 'mysql:mysql-connector-java:8.0.33'         // MySQL
+    // runtimeOnly 'org.postgresql:postgresql:42.5.4'          // PostgreSQL
+    // runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc:11.2.0.jre8' // SQL Server
+    
+    // 开发工具
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    
+    // 配置处理器
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    
+    // 测试依赖
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// 可选：构建时显示详细信息
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+// 可选：打包时包含源码
+java {
+    withSourcesJar()
+} 

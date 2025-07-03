@@ -1,0 +1,68 @@
+{
+  "groups": [
+    {
+      "name": "mini.mybatis",
+      "type": "com.example.mybatis.config.MyBatisProperties",
+      "sourceType": "com.example.mybatis.config.MyBatisProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "mini.mybatis.cache-expire-time",
+      "type": "java.lang.Long",
+      "description": "缓存过期时间（秒）",
+      "sourceType": "com.example.mybatis.config.MyBatisProperties",
+      "defaultValue": 1800
+    },
+    {
+      "name": "mini.mybatis.first-level-cache-enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用一级缓存",
+      "sourceType": "com.example.mybatis.config.MyBatisProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "mini.mybatis.mapper-locations",
+      "type": "java.lang.String",
+      "description": "Mapper接口扫描路径 多个路径用逗号分隔",
+      "sourceType": "com.example.mybatis.config.MyBatisProperties",
+      "defaultValue": "com.example.mybatis.mapper,com.yourcompany.mapper"
+    },
+    {
+      "name": "mini.mybatis.max-cache-size",
+      "type": "java.lang.Integer",
+      "description": "最大缓存大小",
+      "sourceType": "com.example.mybatis.config.MyBatisProperties",
+      "defaultValue": 1000
+    },
+    {
+      "name": "mini.mybatis.query-timeout",
+      "type": "java.lang.Integer",
+      "description": "SQL执行超时时间（秒）",
+      "sourceType": "com.example.mybatis.config.MyBatisProperties",
+      "defaultValue": 30
+    },
+    {
+      "name": "mini.mybatis.second-level-cache-enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用二级缓存",
+      "sourceType": "com.example.mybatis.config.MyBatisProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "mini.mybatis.show-sql",
+      "type": "java.lang.Boolean",
+      "description": "是否开启SQL日志",
+      "sourceType": "com.example.mybatis.config.MyBatisProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "mini.mybatis.sql-security-enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否启用SQL安全检查",
+      "sourceType": "com.example.mybatis.config.MyBatisProperties",
+      "defaultValue": true
+    }
+  ],
+  "hints": []
+}

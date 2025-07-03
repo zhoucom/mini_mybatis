@@ -1,0 +1,57 @@
+# Mini MyBatis Gradle示例项目配置
+
+# 服务器配置  
+server:
+  port: 8080
+
+# 数据源配置
+spring:
+  devtools:
+    restart:
+      enabled: true
+  main:
+    allow-bean-definition-overriding: true  # 允许bean定义覆盖
+  datasource:
+    url: jdbc:h2:mem:gradle_demo
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  
+  # H2数据库控制台
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  # 数据库初始化
+  sql:
+    init:
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+      mode: always
+
+# Mini MyBatis配置
+mini:
+  mybatis:
+    mapper-locations: "com.yourcompany.mapper"
+    show-sql: true
+    query-timeout: 30
+    # 缓存配置
+    first-level-cache-enabled: true      # 启用一级缓存
+    second-level-cache-enabled: true     # 启用二级缓存
+    cache-expire-time: 300000            # 缓存过期时间（毫秒）- 5分钟
+    max-cache-size: 1000                 # 最大缓存大小
+    # 安全配置
+    sql-security-enabled: true           # 启用SQL安全检查
+
+# 日志配置
+logging:
+  level:
+    com.example.mybatis: TRACE
+    com.example.mybatis.scanner: TRACE
+    com.yourcompany: TRACE
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+# Spring Debug配置
+debug: true 

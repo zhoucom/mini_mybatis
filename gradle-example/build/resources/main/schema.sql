@@ -1,0 +1,36 @@
+-- Mini MyBatis Gradle示例 - 数据库表结构
+
+-- 创建商品表
+CREATE TABLE IF NOT EXISTS products (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(200) NOT NULL COMMENT '商品名称',
+    price DECIMAL(10,2) NOT NULL COMMENT '商品价格', 
+    category VARCHAR(100) NOT NULL COMMENT '商品分类',
+    description TEXT COMMENT '商品描述',
+    stock_quantity INT DEFAULT 0 COMMENT '库存数量',
+    created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+);
+
+-- 创建用户表
+CREATE TABLE IF NOT EXISTS users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE COMMENT '用户名',
+    email VARCHAR(100) NOT NULL UNIQUE COMMENT '邮箱',
+    age INT COMMENT '年龄',
+    status VARCHAR(20) DEFAULT 'ACTIVE' COMMENT '状态',
+    created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'
+);
+
+-- 创建订单表
+CREATE TABLE IF NOT EXISTS orders (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL COMMENT '用户ID',
+    product_id BIGINT NOT NULL COMMENT '商品ID', 
+    quantity INT NOT NULL DEFAULT 1 COMMENT '数量',
+    total_amount DECIMAL(10,2) NOT NULL COMMENT '总金额',
+    order_status VARCHAR(20) DEFAULT 'PENDING' COMMENT '订单状态',
+    order_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '下单时间',
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
+); 
